@@ -12,13 +12,16 @@ cnx = mysql.connector.connect(
     host='127.0.0.1',
     database='isphere'
 )
-cursor = cnx.currsor()
+cursor = cnx.cursor()
 hire_start = datetime.date(1999, 1, 1)
 hire_end = datetime.date(1999, 12, 31)
 query1 = ("SELECT COUNT(*) count FROM isphere.session "
           "WHERE sessionstatusid=2 AND sourceid=55 AND unix_timestamp(now())-unix_timestamp(lasttime)>600")
 
 cursor.execute(query1)
+for i in cursor:
+    print(i)
+cursor.close()
 cnx.close()
 
 
