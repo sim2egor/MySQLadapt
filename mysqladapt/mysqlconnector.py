@@ -1,28 +1,27 @@
 
-import datetime
 import mysql.connector
 
 class dbmysq:
 
     def __init__(self):
-        self.cnx = mysql.connector.connect(
+        self._cnx = mysql.connector.connect(
             user='phpmyadmin',
             password='shthyyKsbaZ65wkD',
             host='127.0.0.1',
             database='isphere'
         )
-        self.cnx.autocommit=True
-        self.cursor = self.cnx.cursor()
+        self._cnx.autocommit=True
+        self._cursor = self._cnx.cursor()
     def __enter__ (self):
         return self
     def __exit__(self,exc_type,exc_value, exc_tb):
         self.close()
     @property
     def cursor(self):
-        return self.cursor
+        return self._cursor
     @property
     def connection(self):
-        return self.cnx
+        return self._cnx
 
 
     def execute(self,sql,params=None):
