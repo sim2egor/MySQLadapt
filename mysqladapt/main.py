@@ -3,7 +3,7 @@
 # Press Shift+F10 to execute it or replace it with your code.
 # Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
 import mysqlconnector
-db=mysqlconnector.dbmysq
+db=mysqlconnector.dbmysq()
 db.execute("SELECT COUNT(*) count FROM isphere.session "
                 "WHERE sessionstatusid=2 AND sourceid=55 "
                 "AND unix_timestamp(now())-unix_timestamp(lasttime)>600")
